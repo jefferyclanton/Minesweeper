@@ -16,7 +16,7 @@ class Game {
   }
   playMove(rowIndex, columnIndex) {
     this._board.flipTile(rowIndex, columnIndex);
-    if(this._board.playerBoard[rowIndex, columnIndex] === 'B' ) {
+    if(this._board.playerBoard[rowIndex][columnIndex] === 'B' ) {
       console.log('Bummer! Game Over!');
       this._board.print();
     } else if(!this._board.hasSafeTiles()) {
@@ -27,3 +27,6 @@ class Game {
     }
   }
 }
+
+const g = new Game(3, 3, 3);
+g.playMove(0, 0);
