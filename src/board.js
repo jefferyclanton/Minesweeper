@@ -1,4 +1,4 @@
-class Board {
+export class Board {
   constructor(numberOfRows, numberOfColumns, numberOfBombs) {
     this._numberOfBombs = numberOfBombs;
     this._numberOfTiles = numberOfRows * numberOfColumns;
@@ -37,7 +37,7 @@ class Board {
 
     let numberOfBombs = 0;
 
-    neighborOffsets.forEach(function(offset) {
+    neighborOffsets.forEach(offset => {
       const neighborRowIndex = rowIndex + offset[0];
       const neighborColumnIndex = columnIndex + offset[1];
       if (neighborRowIndex >= 0 && neighborRowIndex < numberOfRows &&
@@ -94,5 +94,4 @@ class Board {
 
     return board;
   }
-
- export default Board;
+}
