@@ -1,4 +1,4 @@
-export class Board {
+class Board {
   constructor(numberOfRows, numberOfColumns, numberOfBombs) {
     this._numberOfBombs = numberOfBombs;
     this._numberOfTiles = numberOfRows * numberOfColumns;
@@ -8,6 +8,7 @@ export class Board {
   get playerBoard() {
     return this._playerBoard;
   }
+
   flipTile(rowIndex, columnIndex) {
     if (this._playerBoard[rowIndex][columnIndex] !== ' ') {
       return;
@@ -17,7 +18,7 @@ export class Board {
     } else {
       this._playerBoard[rowIndex][columnIndex] = this.getNumberOfNeighborBombs(rowIndex, columnIndex);
     }
-    this._numberOfEmptySpaces--;
+    this._numberOfTiles--;
   }
 
   getNumberOfNeighborBombs(rowIndex, columnIndex) {
@@ -36,7 +37,7 @@ export class Board {
 
     let numberOfBombs = 0;
 
-    neighborOffsets.forEach(offset => {
+    neighborOffsets.forEach(function(offset) {
       const neighborRowIndex = rowIndex + offset[0];
       const neighborColumnIndex = columnIndex + offset[1];
       if (neighborRowIndex >= 0 && neighborRowIndex < numberOfRows &&
@@ -50,7 +51,7 @@ export class Board {
   }
 
   hasSafeTiles() {
-    return this._numberOfEmptySpaces !== this._numberOfBombs;
+    return this._numberOfTiles !== this._numberOfBombs;
   }
 
   print() {
@@ -93,4 +94,5 @@ export class Board {
 
     return board;
   }
-}
+
+ export default Board;
